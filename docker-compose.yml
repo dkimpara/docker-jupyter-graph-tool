@@ -1,0 +1,9 @@
+version: '2'
+services:
+  graph-tool:
+    build: ./
+    command: bash -c "pip3 install -r requirements.txt && jupyter notebook --ip 0.0.0.0 --allow-root"
+    volumes:
+      - .:/code
+    ports:
+      - "8888:8888"
