@@ -1,2 +1,8 @@
 matplotlib
 numpy
+scipy
+pandas
+sympy
+nose
+python-igraph
+networkx
