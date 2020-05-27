@@ -1,0 +1,10 @@
+FROM tiagopeixoto/graph-tool:latest
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /code
+WORKDIR /code
+RUN pacman -S python-pip --noconfirm
+COPY /files/ /code/
+RUN pip3 install -r requirements.txt
+RUN pip3 install jupyterlab && jupyter notebook --generate-config
+EXPOSE 8888
+COPY jupyter_notebook_config.py jupyter_notebook_config.py

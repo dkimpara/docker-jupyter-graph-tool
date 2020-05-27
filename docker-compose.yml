@@ -1,9 +1,28 @@
 version: '2'
 services:
-  graph-tool:
-    build: ./
+  jupyterbook:
+    build:
+      context: .
+      dockerfile: Dockerfile_jupyter
+    expose:
+      - "8888"
+    networks:
+      - jupyternet
     command: bash -c "jupyter notebook --ip 0.0.0.0 --allow-root"
     volumes:
-      - .:/code
+      - /code
+      - jupyterdata:/anaconda
     ports:
       - "8888:8888"
+  nginxservice:
+    build:
+      context: .
+      dockerfile: Dockerfile_nginx
+    ports:
+      - 80:80
+    networks:
+      - jupyternet
+networks:
+  jupyternet:
+volumes:
+  jupyterdata:
