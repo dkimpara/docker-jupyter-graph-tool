@@ -12,6 +12,7 @@ services:
     volumes:
       - /code
       - jupyterdata:/anaconda
+      - .:/app
     ports:
       - "8888:8888"
   nginxservice:
